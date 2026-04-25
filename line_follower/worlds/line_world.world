@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="line_world">
+
+    <!-- Physics & lighting -->
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+
+    <physics name="default" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+    </physics>
+
+    <!-- ── White line (a flat thin box) ── -->
+    <model name="line_straight">
+      <static>true</static>
+      <pose>0 0 0.001 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box><size>4.0 0.10 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>4.0 0.10 0.001</size></box></geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- ── Line: right turn section ── -->
+    <model name="line_turn">
+      <static>true</static>
+      <pose>2.0 -0.95 0.001 0 0 -1.5708</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry><box><size>2.0 0.10 0.001</size></box></geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>2.0 0.10 0.001</size></box></geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- ── Obstacle box ── -->
+    <model name="obstacle_box">
+      <static>true</static>
+      <pose>1.0 0.0 0.15 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry><box><size>0.3 0.3 0.3</size></box></geometry>
+          <material>
+            <ambient>1 0.2 0.2 1</ambient>
+            <diffuse>1 0.2 0.2 1</diffuse>
+          </material>
+        </visual>
+        <collision name="col">
+          <geometry><box><size>0.3 0.3 0.3</size></box></geometry>
+        </collision>
+      </link>
+    </model>
+
+  </world>
+</sdf>

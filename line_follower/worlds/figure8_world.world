@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="figure8_world">
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+    <physics name="default" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+    </physics>
+
+    <!-- LOOP A top — GAP 1 is 0.3m wide: x=-2.15 to x=-1.85 -->
+    <model name="top_a1"><static>true</static>
+      <pose>-3.325 1.5 0.001 0 0 0</pose><link name="link">
+        <visual name="v"><geometry><box><size>2.35 0.12 0.001</size></box></geometry>
+          <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>2.35 0.12 0.001</size></box></geometry></collision>
+      </link></model>
+
+    <model name="top_a2"><static>true</static>
+      <pose>-1.175 1.5 0.001 0 0 0</pose><link name="link">
+        <visual name="v"><geometry><box><size>2.35 0.12 0.001</size></box></geometry>
+          <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>2.35 0.12 0.001</size></box></geometry></collision>
+      </link></model>
+
+    <!-- LOOP A left edge -->
+    <model name="left_a"><static>true</static>
+      <pose>-4.5 0.0 0.001 0 0 1.5708</pose><link name="link">
+        <visual name="v"><geometry><box><size>3.0 0.12 0.001</size></box></geometry>
+          <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>3.0 0.12 0.001</size></box></geometry></collision>
+      </link></model>
+
+    <!-- LOOP A bottom -->
+    <model name="bot_a"><static>true</static>
+      <pose>-2.25 -1.5 0.001 0 0 0</pose><link name="link">
+        <visual name="v"><geometry><box><size>4.5 0.12 0.001</size></box></geometry>
+          <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>4.5 0.12 0.001</size></box></geometry></collision>
+      </link></model>
+
+    <!-- Shared crossing vertical -->
+    <model name="crossing"><static>true</static>
+      <pose>0.0 0.0 0.001 0 0 1.5708</pose><link name="link">
+        <visual name="v"><geometry><box><size>3.0 0.12 0.001</size></box></geometry>
+          <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>3.0 0.12 0.001</size></box></geometry></collision>
+      </link></model>
+
+    <!-- LOOP B top -->
+    <model name="top_b"><static>true</static>
+      <pose>2.25 1.5 0.001 0 0 0</pose><link name="link">
+        <visual name="v"><geometry><box><size>4.5 0.12 0.001</size></box></geometry>
+          <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>4.5 0.12 0.001</size></box></geometry></collision>
+      </link></model>
+
+    <!-- LOOP B right — GAP 3 is 0.3m wide: y=0.15 to y=-0.15 -->
+    <model name="right_b1"><static>true</static>
+      <pose>4.5 0.825 0.001 0 0 1.5708</pose><link name="link">
+        <visual name="v"><geometry><box><size>1.35 0.12 0.001</size></box></geometry>
+          <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.35 0.12 0.001</size></box></geometry></collision>
+      </link></model>
+
+    <model name="right_b2"><static>true</static>
+      <pose>4.5 -0.825 0.001 0 0 1.5708</pose><link name="link">
+        <visual name="v"><geometry><box><size>1.35 0.12 0.001</size></box></geometry>
+          <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.35 0.12 0.001</size></box></geometry></collision>
+      </link></model>
+
+    <!-- LOOP B bottom — GAP 2 is 0.3m wide: x=1.15 to x=1.45 -->
+    <model name="bot_b1"><static>true</static>
+      <pose>2.975 -1.5 0.001 0 0 0</pose><link name="link">
+        <visual name="v"><geometry><box><size>3.05 0.12 0.001</size></box></geometry>
+          <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>3.05 0.12 0.001</size></box></geometry></collision>
+      </link></model>
+
+    <model name="bot_b2"><static>true</static>
+      <pose>0.575 -1.5 0.001 0 0 0</pose><link name="link">
+        <visual name="v"><geometry><box><size>1.15 0.12 0.001</size></box></geometry>
+          <material><ambient>1 1 1 1</ambient><diffuse>1 1 1 1</diffuse></material></visual>
+        <collision name="c"><geometry><box><size>1.15 0.12 0.001</size></box></geometry></collision>
+      </link></model>
+
+    <!-- OBSTACLE on top_b -->
+    <model name="obstacle"><static>true</static>
+      <pose>3.5 1.5 0.15 0 0 0</pose><link name="link">
+        <visual name="v">
+          <geometry><box><size>0.25 0.25 0.3</size></box></geometry>
+          <material><ambient>1 0.1 0.1 1</ambient><diffuse>1 0.1 0.1 1</diffuse></material>
+        </visual>
+        <collision name="c"><geometry><box><size>0.25 0.25 0.3</size></box></geometry></collision>
+      </link></model>
+
+  </world>
+</sdf>
